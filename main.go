@@ -1,27 +1,43 @@
 package main
 
 import (
-	// "net/http"
-	// "os"
+	"net/http"
+	"os"
 	// "errors"
 	// "bufio"
 	"fmt"
-	// "bytes"
+	"regexp"
+	"bytes"
+	"strings"
 )
-
+var url string
 func main() {
-	fmt.Println("This is a work in progress.")
+	fmt.Print("Please input a url:  ")
+	fmt.Scanln(&url)
+	getIds()
 }
 
+func getIds() {
+	response, err := http.Get(url)
+    if err != nil {
+        fmt.Printf("%s", err)
+        os.Exit(1)
+    } else {
+        defer response.Body.Close()
+        if err != nil {
+            fmt.Printf("%s", err)
+        }
+	}
+	buf := new(bytes.Buffer)
+    buf.ReadFrom(response.Body)
+    resp := buf.String()
+	re := regexp.MustCompile(`/sound/[0-9]*/`)
+	results := re.FindAllString(resp, -1)
+	str := strings.Join(results,"")
+	ids := strings.Split(str, "/sound")
+	fmt.Printf("%q\n", ids)
+}
 
-	// var url string
-	// var input string
-	// fmt.Print("Please input a url:  ")
-	// fmt.Scanln(&url)
-	// fmt.Printf("You said %v, are you sure?:   ", url)
-	// fmt.Scanln(&input)
-	// if input == "true" {
-	// 	fmt.Println("Ok, let me download this for you.")
-	// } else {
-	// 	fmt.Println("Lol! Get trolled")
-	// }
+func download(){
+	
+}
