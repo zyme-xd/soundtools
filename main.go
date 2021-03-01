@@ -10,14 +10,15 @@ import (
 	"bytes"
 	"strings"
 )
-var url string
+
 func main() {
+	var url string
 	fmt.Print("Please input a url:  ")
 	fmt.Scanln(&url)
-	getIds()
+	download(url)
 }
 
-func getIds() {
+func getIds(url string) []string {
 	response, err := http.Get(url)
     if err != nil {
         fmt.Printf("%s", err)
@@ -35,5 +36,10 @@ func getIds() {
 	results := re.FindAllString(resp, -1)
 	str := strings.Join(results,"")
 	ids := strings.Split(str, "/sound")
+	return(ids)
+}
+
+func download(url string) {
+	ids := getIds(url)
 	fmt.Printf("%q\n", ids)
 }
