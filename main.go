@@ -41,5 +41,8 @@ func getIds(url string) []string {
 
 func download(url string) {
 	ids := getIds(url)
+	ids[0] = ids[len(ids)-1] // Copy last element to index i.
+	ids[len(ids)-1] = ""   // Erase last element (write zero value).
+	ids = ids[:len(ids)-1]   // Truncate slice.
 	fmt.Printf("%q\n", ids)
 }
