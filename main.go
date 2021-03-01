@@ -37,7 +37,3 @@ func getIds() {
 	ids := strings.Split(str, "/sound")
 	fmt.Printf("%q\n", ids)
 }
-
-func download(){
-	
-}
