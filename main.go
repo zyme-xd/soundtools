@@ -41,8 +41,14 @@ func getIds(url string) []string {
 
 func download(url string) {
 	ids := getIds(url)
-	ids[0] = ids[len(ids)-1] // Copy last element to index i.
-	ids[len(ids)-1] = ""   // Erase last element (write zero value).
-	ids = ids[:len(ids)-1]   // Truncate slice.
+	ids[0] = ids[len(ids)-1] // this basically just removes an empty object that the regex grabs
+	ids[len(ids)-1] = ""   
+	ids = ids[:len(ids)-1]   
 	fmt.Printf("%q\n", ids)
+	i := 0
+	for i < len(ids){
+		fmt.Println("I am going to go insane")
+		fmt.Println(i)
+		i++
+	}
 }
