@@ -43,7 +43,6 @@ func download(url string) {
 	ids[0] = ids[len(ids)-1] // this basically just removes an empty object that the regex grabs
 	ids[len(ids)-1] = ""
 	ids = ids[:len(ids)-1]
-	fmt.Printf("%q\n", ids)
 	i := 0
 	for i < len(ids) {
 		// Get the data
