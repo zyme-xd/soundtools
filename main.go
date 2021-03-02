@@ -8,6 +8,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -69,4 +70,5 @@ func download(url string) {
 		i++
 	}
 	fmt.Println("Completed. Check the root folder of where you installed this software.")
+	time.Sleep(time.Second)
 }
