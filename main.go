@@ -67,6 +67,7 @@ func download(url string) {
 		if err != nil {
 			return
 		}
+		time.Sleep(2 * time.Second)
 		i++
 	}
 	fmt.Println("Completed. Check the root folder of where you installed this software.")
