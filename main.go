@@ -14,7 +14,10 @@ import (
 func main() {
 	var url string
 	fmt.Print("Please input a url:  ")
-	fmt.Scanln(&url)
+	_, err := fmt.Scanln(&url)
+	if err != nil { // How swag
+		fmt.Println(err)
+	}
 	download(url)
 }
 
@@ -25,9 +28,6 @@ func getIds(url string) []string {
 		os.Exit(1)
 	} else {
 		defer response.Body.Close()
-		if err != nil {
-			fmt.Printf("%s", err)
-		}
 	}
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(response.Body)
