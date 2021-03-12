@@ -19,6 +19,8 @@ func main() {
 		fmt.Println(err)
 	}
 	download(url)
+	fmt.Println("Completed. Check the root folder of where you installed this software.\nPress enter to end.")
+	fmt.Scanln()
 }
 
 func getIds(url string) []string {
@@ -73,6 +75,4 @@ func download(url string) {
 		time.Sleep(2 * time.Second)
 		i++
 	}
-	fmt.Println("Completed. Check the root folder of where you installed this software.")
-	time.Sleep(time.Second)
 }
