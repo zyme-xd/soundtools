@@ -36,7 +36,7 @@ func getIds(url string) []string {
 	results := re.FindAllString(resp, -1)
 	str := strings.Join(results, "")
 	ids := strings.Split(str, "/sound") // Splitting garbage, how fun
-	return (ids)
+	return ids
 }
 
 func download(url string) {
