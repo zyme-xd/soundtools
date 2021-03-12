@@ -30,7 +30,10 @@ func getIds(url string) []string {
 		defer response.Body.Close()
 	}
 	buf := new(bytes.Buffer)
-	buf.ReadFrom(response.Body)
+	_, err = buf.ReadFrom(response.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
 	resp := buf.String()
 	re := regexp.MustCompile(`/sound/[0-9]*/`) // Regex to get sound ID's from the page
 	results := re.FindAllString(resp, -1)
