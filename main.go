@@ -26,8 +26,7 @@ func main() {
 func getIds(url string) []string {
 	response, err := http.Get(url) // Gets URL provided by user.
 	if err != nil {
-		fmt.Printf("%s", err)
-		os.Exit(1)
+		fmt.Println(err)
 	} else {
 		defer response.Body.Close()
 	}
@@ -58,7 +57,7 @@ func download(url string) {
 		header := re.FindString(joined)
 		cleaned := strings.ReplaceAll(header, `"`, "")
 		if err != nil {
-			return
+			fmt.Println(err)
 		}
 		name := cleaned
 		defer resp.Body.Close()
@@ -70,7 +69,7 @@ func download(url string) {
 		// Write the body to file
 		_, err = io.Copy(out, resp.Body)
 		if err != nil {
-			return
+			fmt.Println(err)
 		}
 		time.Sleep(2 * time.Second)
 		i++
