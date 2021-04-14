@@ -71,7 +71,7 @@ func download(url string) {
 		if err != nil {
 			fmt.Println(err)
 		}
-		time.Sleep(2 * time.Second)
+		time.Sleep(2 * time.Second) // This delay was added by request by the sites manager. Don't remove this.
 		i++
 	}
 }
